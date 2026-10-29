@@ -1,3 +1,5 @@
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd, pageMeta } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
@@ -10,14 +12,12 @@ import EmrScreen from "@/components/screens/EmrScreen";
 import Phones from "@/components/screens/Phones";
 import { btnLight, btnOutlineLight } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "Solutions",
-  description: "Curengo for inpatient rehabilitation and post-hospitalization care, plus OP physiotherapy, assisted living and home care.",
-};
+export const metadata: Metadata = pageMeta("/solutions", "Solutions", "Curengo for inpatient rehabilitation and post-hospitalization care, plus OP physiotherapy, assisted living and home care.");
 
 export default function SolutionsPage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd("Solutions", "/solutions")} />
       <PageHero
         tone="teal"
         title="Built for care between the hospital and home"

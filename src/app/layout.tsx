@@ -6,20 +6,36 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Motion from "@/components/Motion";
 import SmoothScroll from "@/components/SmoothScroll";
+import JsonLd from "@/components/JsonLd";
+import { organizationLd, SEARCH_VISIBLE, SITE_NAME, SITE_TAGLINE, SITE_URL, websiteLd } from "@/lib/site";
 import "./globals.css";
 
 // Curengo's brand font (the same one curengo.ai uses)
 const figtree = Figtree({ variable: "--font-figtree", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
+const DESCRIPTION =
+  "Curengo digitizes inpatient rehabilitation and post-hospitalization care: one patient record for the whole care team, from admission to follow-up.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://curengo.ai"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Curengo | Rehabilitation Management Information System",
-    template: "%s | Curengo",
+    default: `${SITE_NAME} | ${SITE_TAGLINE}`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Curengo digitizes inpatient rehabilitation and post-hospitalization care: one patient record for the whole care team, from admission to follow-up.",
-  openGraph: { siteName: "Curengo", type: "website", locale: "en_IN" },
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: ["rehabilitation management information system", "RMIS", "rehab EMR", "inpatient rehabilitation software", "transitional care software", "physiotherapy software", "ABDM", "ABHA"],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  alternates: { canonical: "/" },
+  openGraph: { type: "website", siteName: SITE_NAME, locale: "en_IN", url: "/", title: `${SITE_NAME} | ${SITE_TAGLINE}`, description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: `${SITE_NAME} | ${SITE_TAGLINE}`, description: DESCRIPTION },
+  // hidden from search until launch: see SEARCH_VISIBLE in src/lib/site.ts
+  robots: SEARCH_VISIBLE
+    ? { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } }
+    : { index: false, follow: false, googleBot: { index: false, follow: false } },
+  formatDetection: { telephone: false, email: false, address: false },
 };
 
 export const viewport: Viewport = {
@@ -47,6 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <JsonLd data={[organizationLd, websiteLd]} />
         <Header />
         <main id="main">{children}</main>
         <Footer />

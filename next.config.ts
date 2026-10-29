@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   reactCompiler: true,
+  // the share-picture routes read these files at request time; make sure Vercel ships them
+  outputFileTracingIncludes: {
+    "/opengraph-image": ["./assets/fonts/*", "./public/brand/curengo-logo-reverse.png"],
+    "/twitter-image": ["./assets/fonts/*", "./public/brand/curengo-logo-reverse.png"],
+  },
   turbopack: {
     rules: {
       "*.css": {

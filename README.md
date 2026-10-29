@@ -33,6 +33,29 @@ Without it, the form works in development (leads are only logged) but answers "n
 Colours are CSS variables, used through Tailwind: `bg-page`, `bg-surface`, `bg-sunken`, `text-heading`, `text-body`, `text-muted`, `text-faint`, `border-line`, `bg-accent`, `bg-accent-soft` ...
 Dark mode swaps the variables (`data-theme="dark"` on `<html>`). Add the class `navy navy-glow` to a section to give it the dark navy look; product screens inside keep the normal theme.
 
+## Before launch: switch search back on ⚠️
+
+The site is **hidden from search engines** while it is a preview (curengo-website.vercel.app):
+every page says `noindex, nofollow` and `robots.txt` blocks all crawlers.
+
+When the site goes live on **curengo.ai**:
+
+1. Open `src/lib/site.ts` and set `SEARCH_VISIBLE = true`.
+2. Connect the curengo.ai domain in Vercel (Settings → Domains) and redeploy.
+3. Check `https://curengo.ai/robots.txt` now allows crawlers and lists the sitemap.
+4. Later (not set up yet): Google Search Console, Google Analytics, Google Business Profile.
+
+## SEO in this project
+
+- `src/lib/site.ts`: site address, the search on/off switch, `pageMeta()` (title, description, canonical,
+  Open Graph + Twitter for each page) and the structured data (Organization, WebSite, SoftwareApplication,
+  breadcrumbs). Rendered by `src/components/JsonLd.tsx`.
+- `src/app/opengraph-image.tsx` (+ `twitter-image.tsx`): the 1200×630 share picture, drawn with the Figtree
+  font in `assets/fonts`.
+- `src/app/robots.ts`, `sitemap.ts`, `manifest.ts`, `public/llms.txt`.
+- Waiting on Curengo before adding: social profile links and address (Organization), prices
+  (SoftwareApplication offers), confirmed FAQ answers (FAQPage schema).
+
 ## Before launch: placeholders to replace
 
 Anything in `[brackets]` (and `TODO:` comments) is waiting on Curengo:

@@ -1,3 +1,5 @@
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd, pageMeta } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
@@ -7,10 +9,7 @@ import GetStarted from "@/components/sections/GetStarted";
 import { Icon } from "@/components/icons";
 import { btnLight, btnOutlineLight, btnPrimary, sectionTitle } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "Curengo builds software for rehabilitation centres, so care teams spend less time on paper and more time on patients.",
-};
+export const metadata: Metadata = pageMeta("/about", "About", "Curengo builds software for rehabilitation centres, so care teams spend less time on paper and more time on patients.");
 
 // What is live and what is next (from the client meeting, 27 Oct 2026)
 const TIMELINE = [
@@ -36,6 +35,7 @@ const FACTS = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd("About", "/about")} />
       <PageHero
         title="We’re digitizing rehabilitation care"
         lede="Curengo builds software for rehabilitation centres, so the people who look after patients spend less time on paper and more time on care."

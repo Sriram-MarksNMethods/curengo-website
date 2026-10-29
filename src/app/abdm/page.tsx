@@ -1,3 +1,5 @@
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd, pageMeta } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
@@ -8,10 +10,7 @@ import AbhaScreen from "@/components/screens/AbhaScreen";
 import SectionHead from "@/components/SectionHead";
 import { btnLight, btnOutlineLight } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "ABDM & Integrations",
-  description: "How Curengo works with ABDM and ABHA, and the current status of every integration.",
-};
+export const metadata: Metadata = pageMeta("/abdm", "ABDM & Integrations", "How Curengo works with ABDM and ABHA, and the current status of every integration.");
 
 const HOW = [
   ["The patient shares their ABHA", "At admission, the front desk links the patient’s ABHA to their Curengo record."],
@@ -22,6 +21,7 @@ const HOW = [
 export default function AbdmPage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd("ABDM & Integrations", "/abdm")} />
       <PageHero
         title="ABDM and integrations"
         lede="Curengo is being connected to the Ayushman Bharat Digital Mission, so patients can share their records with your centre using their ABHA. This page shows where every integration stands today."

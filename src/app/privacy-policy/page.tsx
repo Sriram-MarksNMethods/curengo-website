@@ -1,7 +1,9 @@
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd, pageMeta } from "@/lib/site";
 import type { Metadata } from "next";
 import LegalPage, { type LegalSection } from "@/components/LegalPage";
 
-export const metadata: Metadata = { title: "Privacy Policy", description: "How Curengo handles personal data on this website." };
+export const metadata: Metadata = pageMeta("/privacy-policy", "Privacy Policy", "How Curengo handles personal data on this website.");
 
 const SECTIONS: LegalSection[] = [
   { id: "who", title: "Who we are", body: <p>This policy explains how <span className="ph">[Curengo legal entity name]</span> (“Curengo”, “we”) handles personal data when you visit this website, book a demo or contact us. Our registered office is at <span className="ph">[address]</span>.</p> },
@@ -44,5 +46,10 @@ const SECTIONS: LegalSection[] = [
 ];
 
 export default function PrivacyPage() {
-  return <LegalPage title="Privacy Policy" kind="policy" sections={SECTIONS} />;
+  return (
+    <>
+      <JsonLd data={breadcrumbLd("Privacy Policy", "/privacy-policy")} />
+      <LegalPage title="Privacy Policy" kind="policy" sections={SECTIONS} />
+    </>
+  );
 }

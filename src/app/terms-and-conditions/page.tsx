@@ -1,7 +1,9 @@
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd, pageMeta } from "@/lib/site";
 import type { Metadata } from "next";
 import LegalPage, { type LegalSection } from "@/components/LegalPage";
 
-export const metadata: Metadata = { title: "Terms and Conditions", description: "Terms for using the Curengo website." };
+export const metadata: Metadata = pageMeta("/terms-and-conditions", "Terms and Conditions", "Terms for using the Curengo website.");
 
 const SECTIONS: LegalSection[] = [
   { id: "about", title: "About these terms", body: <p>These terms govern your use of this website, operated by <span className="ph">[Curengo legal entity name]</span>. Use of the Curengo platform itself is covered by a separate subscription agreement with each centre.</p> },
@@ -14,5 +16,10 @@ const SECTIONS: LegalSection[] = [
 ];
 
 export default function TermsPage() {
-  return <LegalPage title="Terms and Conditions" kind="page" sections={SECTIONS} />;
+  return (
+    <>
+      <JsonLd data={breadcrumbLd("Terms and Conditions", "/terms-and-conditions")} />
+      <LegalPage title="Terms and Conditions" kind="page" sections={SECTIONS} />
+    </>
+  );
 }

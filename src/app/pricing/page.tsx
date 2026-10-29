@@ -1,3 +1,5 @@
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd, pageMeta } from "@/lib/site";
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Faq from "@/components/sections/Faq";
@@ -5,10 +7,7 @@ import GetStarted from "@/components/sections/GetStarted";
 import Plans from "@/components/sections/Plans";
 import SectionHead from "@/components/SectionHead";
 
-export const metadata: Metadata = {
-  title: "Pricing",
-  description: "Curengo plans for physiotherapy clinics, rehab centres and groups of centres.",
-};
+export const metadata: Metadata = pageMeta("/pricing", "Pricing", "Curengo plans for physiotherapy clinics, rehab centres and groups of centres.");
 
 // which plan includes what [plan contents to confirm with Curengo]
 const ROWS: [string, boolean, boolean, boolean][] = [
@@ -25,6 +24,7 @@ const ROWS: [string, boolean, boolean, boolean][] = [
 export default function PricingPage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd("Pricing", "/pricing")} />
       <PageHero
         tone="teal"
         title="Simple pricing for every size of centre"

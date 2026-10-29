@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
-const SITE = "https://curengo.ai";
+// The date the content last changed meaningfully; bump it when pages are updated.
+const UPDATED = new Date("2026-10-29");
 const PAGES: [string, number][] = [
   ["", 1],
   ["/platform", 0.9],
@@ -14,5 +16,5 @@ const PAGES: [string, number][] = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return PAGES.map(([path, priority]) => ({ url: `${SITE}${path}`, changeFrequency: "monthly", priority }));
+  return PAGES.map(([path, priority]) => ({ url: `${SITE_URL}${path}`, lastModified: UPDATED, changeFrequency: "monthly", priority }));
 }

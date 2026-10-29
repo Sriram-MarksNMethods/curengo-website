@@ -1,16 +1,16 @@
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd, pageMeta } from "@/lib/site";
 import type { Metadata } from "next";
 import DemoForm from "@/components/DemoForm";
 import PageHero from "@/components/PageHero";
 import { Tick } from "@/components/icons";
 
-export const metadata: Metadata = {
-  title: "Book a Demo",
-  description: "Book a walkthrough of Curengo built around how your rehabilitation centre works.",
-};
+export const metadata: Metadata = pageMeta("/book-a-demo", "Book a Demo", "Book a walkthrough of Curengo built around how your rehabilitation centre works.");
 
 export default function BookDemoPage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd("Book a Demo", "/book-a-demo")} />
       <PageHero
         tone="teal"
         title="See Curengo with your own workflow"
