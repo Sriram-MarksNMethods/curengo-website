@@ -1,0 +1,23 @@
+# Curengo
+
+> Curengo is a Rehabilitation Management Information System (RMIS): software that digitizes inpatient rehabilitation and post-hospitalization care, with one patient record for the whole care team from admission to follow-up. Tagline: "Digitizing the Continuum of Care."
+
+Curengo is built for subacute and transitional care centres, post-hospitalization care, and (as supporting use cases) outpatient physiotherapy clinics, assisted living and home care. It is a web app that runs in the browser; patient and partner-doctor mobile apps are in development. Integration with India's Ayushman Bharat Digital Mission (ABDM / ABHA) is in progress, not yet complete.
+
+## Pages
+
+- [Home](https://curengo.ai/): overview, the patient journey and the AI features
+- [Platform](https://curengo.ai/platform): Rehab EMR, clinical workflow, operations, revenue, connected care, automation and analytics; a screen for every role; assessment scales; security
+- [Solutions](https://curengo.ai/solutions): inpatient rehabilitation and post-hospitalization care
+- [ABDM & integrations](https://curengo.ai/abdm): how ABHA record sharing will work and the status of each integration
+- [Pricing](https://curengo.ai/pricing): Clinic, Centre and Group plans, monthly or annual
+- [About](https://curengo.ai/about): what is live today and what is being built next
+- [Book a demo](https://curengo.ai/book-a-demo): request a walkthrough
+
+## Key features
+
+- One patient record shared by doctors, nurses, physiotherapists, dietitians and therapists
+- Voice order entry: spoken medicine and test orders become structured orders for nursing, pharmacy and billing
+- Discharge summaries drafted from the record, reviewed and signed by a doctor
+- Standard assessment scales (for example Barthel Index, Berg Balance Scale) with item breakdowns tracked over the stay
+- Bed management, admissions, service packages, pharmacy and OP/IP billing
