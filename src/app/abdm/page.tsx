@@ -34,7 +34,7 @@ export default function AbdmPage() {
         visual={<AbhaScreen />}
       />
       <AbdmIntegrations withHead={false} />
-      <section id="how-sharing" className="navy navy-glow sec-tight">
+      <section id="how-sharing" className="purple sec-tight">
         <div className="wrap">
           <SectionHead title="How record sharing will work" lede={<>Once the integration is live, sharing follows the ABDM consent flow. <span className="ph">[flow to confirm with Curengo]</span></>} />
           <ol className="grid grid-cols-3 gap-8 max-[820px]:grid-cols-1">

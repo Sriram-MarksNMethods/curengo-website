@@ -9,7 +9,7 @@ export default function Clients() {
         </p>
         <div className="edge-fade overflow-hidden">
           <div className="flex w-max animate-marquee gap-4 hover:[animation-play-state:paused]">
-            {[...logos, ...logos].map((i, k) => (
+            {[...logos, ...logos].map((_, k) => (
               <span key={k} aria-hidden={k >= logos.length} className="grid h-16 w-40 flex-none place-items-center rounded-xl border border-line bg-surface text-[0.8125rem] text-faint">
                 [Client logo]
               </span>

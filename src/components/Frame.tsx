@@ -6,7 +6,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { showPanel } from "@/lib/motion";
 
-type Props = { panes: ReactNode[]; current: number; label?: string; ids?: string[]; labelledBy?: string[] };
+type Props = { panes: ReactNode[]; current: number; ids?: string[]; labelledBy?: string[] };
 
 export default function Frame({ panes, current, ids, labelledBy }: Props) {
   const box = useRef<HTMLDivElement>(null);

@@ -1,6 +1,6 @@
 "use client";
 
-// Thank-you page after "Book a demo". The form's navy flood is still covering the screen when this
+// Thank-you page after "Book a demo". The form's purple flood is still covering the screen when this
 // page opens: fade it away, then the ring and check draw in and the next steps rise one by one.
 // The first name comes from sessionStorage (set by DemoForm), never from the URL.
 import Link from "next/link";
@@ -38,7 +38,7 @@ export default function ThankYou() {
   }, []);
 
   return (
-    <section className="navy navy-glow hero-purple flex min-h-svh items-center pt-(--topbar) pb-16">
+    <section className="purple flex min-h-svh items-center pt-(--topbar) pb-16">
       <div className="wrap flex flex-col items-center text-center">
         <div className="relative mt-10 mb-9 grid size-24 place-items-center" aria-hidden="true">
           <span className="ty-pulse absolute inset-0 rounded-full border-2 border-white/40" />
@@ -51,7 +51,7 @@ export default function ThankYou() {
         <h1 className="ty-in m-0 text-[clamp(2.25rem,1.6rem+2.4vw,3.5rem)] leading-[1.08] font-medium tracking-[-0.025em] text-white [animation-delay:1.2s]">
           {name ? `Thank you, ${name}.` : "Thank you."}
         </h1>
-        <p className="ty-in mt-5 max-w-xl text-lg leading-[1.7] text-[#c6bfe6] [animation-delay:1.35s]">
+        <p className="ty-in mt-5 max-w-xl text-lg leading-[1.7] text-white/90 [animation-delay:1.35s]">
           We’ll call you within <span className="ph">[one working day]</span> to set up your demo.
         </p>
 

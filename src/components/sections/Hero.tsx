@@ -17,7 +17,7 @@ export default function Hero() {
   useEffect(() => startNetwork(), []);
 
   return (
-    <div id="curtain" aria-label="Curengo" className="relative flex min-h-svh flex-col overflow-hidden bg-page bg-(image:--hero-wash) pt-(--topbar)">
+    <div id="curtain" aria-label="Curengo" className="hero-home relative flex min-h-svh flex-col overflow-hidden bg-page bg-(image:--hero-wash) pt-(--topbar)">
       <section
         id="hero"
         className="relative transition-opacity duration-500 [.js_&:not([data-ready])]:max-[900px]:opacity-0 [.js_&:not([data-ready])]:max-[900px]:animate-[hero-show_0.5s_2.5s_forwards] flex flex-[1_0_auto] flex-col items-center justify-center px-[max(1.5rem,env(safe-area-inset-right,0px))] pt-[clamp(1rem,4vh,3rem)] pb-[clamp(1.5rem,6vh,4rem)] max-[900px]:justify-start max-[900px]:pt-2 max-[900px]:pb-14"
@@ -42,7 +42,7 @@ export default function Hero() {
               width={720}
               height={267}
               loading="eager"
-              className="block h-[clamp(2.75rem,1.9rem+3.4vw,4rem)] w-auto dark:hidden max-[900px]:hidden! min-[901px]:[@media(max-height:620px)]:h-9"
+              className="hidden h-[clamp(2.75rem,1.9rem+3.4vw,4rem)] w-auto max-[900px]:hidden! min-[901px]:[@media(max-height:620px)]:h-9"
             />
             <Image
               src="/brand/curengo-logo-reverse.png"
@@ -50,7 +50,7 @@ export default function Hero() {
               width={360}
               height={124}
               loading="eager"
-              className="hidden h-[clamp(2.75rem,1.9rem+3.4vw,4rem)] w-auto dark:block max-[900px]:hidden! min-[901px]:[@media(max-height:620px)]:h-9"
+              className="block h-[clamp(2.75rem,1.9rem+3.4vw,4rem)] w-auto max-[900px]:hidden! min-[901px]:[@media(max-height:620px)]:h-9"
             />
             <span className="flap inline-flex items-center">
               <span className="flap__row inline-flex gap-px" id="flapRow" aria-hidden="true" />
@@ -60,11 +60,11 @@ export default function Hero() {
             </span>
           </p>
           {/* phones: one line, nearly edge to edge, same size; only phones too narrow for that wrap it onto two balanced lines */}
-          <h1 className="m-0 text-[clamp(1.5rem,0.9rem+2.4vw,2.25rem)] leading-[1.15] font-medium tracking-[-0.02em] text-heading max-[900px]:-mx-4 max-[900px]:text-balance max-[400px]:text-[1.3125rem]">
-            <span className="block max-[900px]:inline">Digitizing the</span> <span className="block max-[900px]:inline">Continuum of Care.</span>
+          <h1 className="m-0 text-[clamp(1.5rem,0.9rem+2.4vw,2.25rem)] leading-[1.15] font-medium tracking-[-0.02em] text-heading max-[400px]:text-[1.3125rem]">
+            <span className="block">Digitizing the</span> <span className="block">Continuum of Care.</span>
           </h1>
-          {/* phones: nearly full width, and the size shrinks just enough that the first line always fits (so it is 3 lines) */}
-          <p className="max-w-152 text-[1.0625rem] leading-[1.7] text-muted max-[900px]:-mx-3 max-[900px]:max-w-none max-[900px]:text-[min(1.0625rem,calc((100vw-1.5rem)/21.8))] max-[400px]:text-[min(0.9375rem,calc((100vw-1.5rem)/21.8))] min-[901px]:[@media(max-height:620px)]:hidden">
+          {/* phones: smaller, so it fits inside the octagon (network.js sets its width) */}
+          <p className="max-w-152 text-[1.0625rem] leading-[1.7] text-muted max-[900px]:text-[0.8125rem] max-[900px]:leading-[1.5] max-[900px]:text-balance max-[380px]:text-[0.75rem] min-[901px]:[@media(max-height:620px)]:hidden">
             Rehabilitation Management Information System
             <br />
             Connecting care teams. Streamlining operations. Empowering recovery.

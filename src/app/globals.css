@@ -11,13 +11,13 @@
   --page: #fcfcfc;
   --surface: #fff;
   --surface-sunken: #f5f5f5;
-  --accent: #4d2a8d;
-  --accent-hover: #3e2173;
+  --accent: var(--brand-purple);
+  --accent-hover: #54478c;
   --accent-contrast: #fff;
-  --accent-soft: rgba(77, 42, 141, 0.1);
-  --accent-line: rgba(77, 42, 141, 0.4);
-  --accent-wash: rgba(77, 42, 141, 0.055);
-  --glow: 93, 53, 167;
+  --accent-soft: color-mix(in srgb, var(--brand-purple) 10%, transparent);
+  --accent-line: color-mix(in srgb, var(--brand-purple) 40%, transparent);
+  --accent-wash: color-mix(in srgb, var(--brand-purple) 5.5%, transparent);
+  --glow: 102, 88, 164; /* brand purple as r, g, b (read by the hero canvas) */
   --heading: #171717;
   --body: #3d3d3d;
   --muted: #525252;
@@ -27,23 +27,28 @@
   --hover: rgba(0, 0, 0, 0.04);
   --ok: #1a7f4b;
   --warn: #9a6200;
-  --navy: #17133d;
-  --teal: #22b8d4;
   --shadow-ui: 0 1px 2px rgba(23, 19, 61, 0.06), 0 24px 48px -24px rgba(23, 19, 61, 0.28);
   --hero-wash: none;
   --topbar: 4.5rem;
+  /* Brand colours: change them here (and in BRAND in src/lib/site.ts, for the share image and manifest). */
+  --brand-purple: #6658a4;
+  --brand-purple-light: #6a69af; /* the bright corner of the gradient */
+  --brand-purple-tint: #efedf7; /* hover on white buttons */
+  --brand-teal: #01bdd5;
+  /* the purple gradient (from color.css): every purple section uses this */
+  --purple-gradient: radial-gradient(circle farthest-corner at 79.09% 5.05%, var(--brand-purple-light) 0%, var(--brand-purple) 100%);
 }
 [data-theme="dark"] {
   --page: #121212;
   --surface: #1e1e1e;
   --surface-sunken: #0f0f0f;
-  --accent: #af9cd3;
-  --accent-hover: #ccbfe3;
-  --accent-contrast: #0d0d0d;
-  --accent-soft: rgba(175, 156, 211, 0.12);
-  --accent-line: rgba(175, 156, 211, 0.4);
-  --accent-wash: rgba(175, 156, 211, 0.07);
-  --glow: 175, 156, 211;
+  --accent: var(--brand-purple);
+  --accent-hover: #7a6db5;
+  --accent-contrast: #fff;
+  --accent-soft: color-mix(in srgb, var(--brand-purple) 20%, transparent);
+  --accent-line: color-mix(in srgb, var(--brand-purple) 60%, transparent);
+  --accent-wash: color-mix(in srgb, var(--brand-purple) 10%, transparent);
+  --glow: 102, 88, 164; /* brand purple as r, g, b (read by the hero canvas) */
   --heading: #e7e7e7;
   --body: #d4d4d4;
   --muted: #a1a1a1;
@@ -58,7 +63,7 @@
   color-scheme: dark;
 }
 
-/* Copies of the page tokens taken at the root, so product screens inside a navy section can switch back. */
+/* Copies of the page tokens taken at the root, so product screens inside a purple / teal section can switch back. */
 :root {
   --root-page: var(--page);
   --root-surface: var(--surface);
@@ -79,22 +84,22 @@
   --root-warn: var(--warn);
 }
 
-/* The navy look from the AI section. Add class "navy" to any section or card: its text, borders and
+/* The purple section look (brand gradient). Add class "purple" to any section or card: its text, borders and
    buttons recolour themselves through the tokens. Product screens inside go back to the normal theme. */
-.navy {
-  --page: #211b50;
-  --surface: rgba(255, 255, 255, 0.05);
-  --surface-sunken: rgba(255, 255, 255, 0.04);
-  --accent: #c3b2f3;
-  --accent-hover: #ddd2fb;
-  --accent-contrast: #17133d;
-  --accent-soft: rgba(195, 178, 243, 0.15);
-  --accent-line: rgba(195, 178, 243, 0.4);
-  --accent-wash: rgba(195, 178, 243, 0.08);
+.purple {
+  --page: var(--brand-purple);
+  --surface: rgba(255, 255, 255, 0.1);
+  --surface-sunken: rgba(255, 255, 255, 0.07);
+  --accent: #fff;
+  --accent-hover: #f1eefa;
+  --accent-contrast: var(--brand-purple);
+  --accent-soft: rgba(255, 255, 255, 0.16);
+  --accent-line: rgba(255, 255, 255, 0.5);
+  --accent-wash: rgba(255, 255, 255, 0.08);
   --heading: #fff;
-  --body: #e4e0f5;
-  --muted: #bab3dd;
-  --faint: #958dc4;
+  --body: #fff;
+  --muted: rgba(255, 255, 255, 0.88);
+  --faint: rgba(255, 255, 255, 0.75);
   --line: rgba(255, 255, 255, 0.12);
   --fill: rgba(255, 255, 255, 0.1);
   --hover: rgba(255, 255, 255, 0.06);
@@ -103,30 +108,11 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-color: var(--navy);
+  background-color: var(--brand-purple);
+  background-image: var(--purple-gradient);
   color: var(--body);
 }
-.navy-glow::before,
-.navy-glow::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  aspect-ratio: 1;
-  pointer-events: none;
-}
-.navy-glow::before {
-  inset: -20% -10% auto auto;
-  width: 70%;
-  background: radial-gradient(closest-side, rgba(105, 80, 155, 0.55), transparent);
-  filter: blur(10px);
-}
-.navy-glow::after {
-  left: -15%;
-  bottom: -40%;
-  width: 60%;
-  background: radial-gradient(closest-side, rgba(34, 184, 212, 0.18), transparent);
-}
-.navy .screen {
+.purple .screen {
   --ok: var(--root-ok);
   --warn: var(--root-warn);
   --page: var(--root-page);
@@ -146,10 +132,10 @@
   --hover: var(--root-hover);
   color: var(--body);
 }
-/* The teal brand colour (#5DB8D7) as a section style: add class "teal" (and "teal-glow" for soft light).
+/* The teal brand colour (flat) as a section style: add class "teal".
    Text on it is white (cards are a light white tint, buttons are white). Product screens inside keep the normal theme. */
 .teal {
-  --page: #5db8d7;
+  --page: var(--brand-teal);
   --surface: rgba(255, 255, 255, 0.14);
   --surface-sunken: rgba(255, 255, 255, 0.1);
   --accent: #fff;
@@ -170,28 +156,8 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-color: #5db8d7;
+  background-color: var(--brand-teal);
   color: var(--body);
-}
-.teal-glow::before,
-.teal-glow::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  aspect-ratio: 1;
-  pointer-events: none;
-}
-.teal-glow::before {
-  top: -45%;
-  right: -10%;
-  width: 60%;
-  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.2), transparent);
-}
-.teal-glow::after {
-  bottom: -50%;
-  left: -12%;
-  width: 55%;
-  background: radial-gradient(closest-side, rgba(105, 80, 155, 0.28), transparent);
 }
 .teal .screen {
   --page: var(--root-page);
@@ -212,21 +178,6 @@
   color: var(--body);
 }
 
-/* the voice demo keeps its own dark palette */
-.screen-dark {
-  --page: #221c52;
-  --surface: #1d1846;
-  --surface-sunken: #151136;
-  --line: rgba(255, 255, 255, 0.1);
-  --fill: rgba(255, 255, 255, 0.1);
-  --heading: #fff;
-  --body: #e4e0f5;
-  --muted: #b9b2dc;
-  --faint: #8f87bf;
-  --accent: #b9a6ef;
-  --accent-soft: rgba(185, 166, 239, 0.16);
-  color: var(--body);
-}
 
 @theme inline {
   --color-page: var(--page);
@@ -246,9 +197,9 @@
   --color-fill: var(--fill);
   --color-hover: var(--hover);
   --color-ok: var(--ok);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-purple-tint: var(--brand-purple-tint);
   --color-warn: var(--warn);
-  --color-navy: var(--navy);
-  --color-teal: var(--teal);
   --shadow-ui: var(--shadow-ui);
   --font-sans: var(--font-figtree), system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --container-wrap: 96rem;
@@ -302,7 +253,7 @@ html.lenis body {
   color: var(--faint);
 }
 /* placeholders on the purple / teal page heroes: the lede colour, marked with a dotted underline */
-.navy .ph {
+.purple .ph {
   color: inherit;
   text-decoration: underline dotted rgba(255, 255, 255, 0.6);
   text-underline-offset: 0.25em;
@@ -487,11 +438,6 @@ html.lenis body {
 }
 
 /* the same-size screen frame (journey + role picker): a soft fade at the bottom of tall screens */
-.frame-fade {
-  -webkit-mask-image: linear-gradient(#000 calc(100% - 2rem), transparent);
-  mask-image: linear-gradient(#000 calc(100% - 2rem), transparent);
-}
-
 /* staged steps inside the voice + summary demos */
 [data-step] {
   opacity: 0.12;
@@ -538,7 +484,7 @@ html.lenis body {
 
 /* ---------------------------------------------------------------------------
    Home hero: the care network (a port of the docs.abdm.gov.in hero).
-   Its nodes and split-flap board are built by src/components/hero/network.ts,
+   Its nodes and split-flap board are built by src/components/hero/network.js,
    so they are styled here rather than with classes in JSX.
    --------------------------------------------------------------------------- */
 .web {
@@ -787,21 +733,47 @@ html.lenis body {
   -webkit-mask-image: linear-gradient(#000 calc(100% - 2rem), transparent);
   mask-image: linear-gradient(#000 calc(100% - 2rem), transparent);
 }
-/* Inner page heroes alternate between two gradients (PageHero tone="purple" | "teal"). Both use the
-   navy tokens, so text and buttons on them are white. */
-.hero-purple {
-  background-image: linear-gradient(140deg, #17133d 0%, #2f1f66 50%, #5a3f94 100%);
+/* Home hero in light mode: flat brand purple with white text (dark mode keeps the normal dark page). */
+[data-theme="light"] .hero-home {
+  --page: var(--brand-purple);
+  --surface: rgba(255, 255, 255, 0.1);
+  --surface-sunken: rgba(255, 255, 255, 0.06);
+  --accent: #fff;
+  --accent-hover: #f1eefa;
+  --accent-contrast: #3b2f78;
+  --accent-soft: rgba(255, 255, 255, 0.16);
+  --accent-line: rgba(255, 255, 255, 0.6);
+  --accent-wash: rgba(255, 255, 255, 0.08);
+  --glow: 255, 255, 255;
+  --heading: #fff;
+  --body: #fff;
+  --muted: rgba(255, 255, 255, 0.88);
+  --faint: rgba(255, 255, 255, 0.75);
+  --line: rgba(255, 255, 255, 0.28);
+  --fill: rgba(255, 255, 255, 0.14);
+  --hover: rgba(255, 255, 255, 0.1);
+  background-color: var(--brand-purple);
+  background-image: none;
+  color: var(--body);
 }
+/* Home hero in dark mode keeps its original lilac accent (left as it was, on request). */
+[data-theme="dark"] .hero-home {
+  --accent: #af9cd3;
+  --accent-hover: #ccbfe3;
+  --accent-contrast: #0d0d0d;
+  --accent-soft: rgba(175, 156, 211, 0.12);
+  --accent-line: rgba(175, 156, 211, 0.4);
+  --accent-wash: rgba(175, 156, 211, 0.07);
+  --glow: 175, 156, 211;
+}
+/* Inner page heroes alternate between purple and teal (PageHero tone). A teal hero is a .purple section
+   (white text tokens) with the flat teal background swapped in. */
 .hero-teal {
-  --page: #1f7ea6;
-  background-color: #1f7ea6;
-  background-image: linear-gradient(140deg, #134f6b 0%, #1d7aa1 50%, #3fa6cc 100%);
-}
-.hero-teal.navy-glow::before {
-  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.16), transparent);
-}
-.hero-teal.navy-glow::after {
-  background: radial-gradient(closest-side, rgba(105, 80, 155, 0.3), transparent);
+  --page: var(--brand-teal);
+  --muted: rgba(255, 255, 255, 0.92);
+  --faint: rgba(255, 255, 255, 0.8);
+  background-color: var(--brand-teal);
+  background-image: none;
 }
 .frame .screen {
   height: 100%;
@@ -811,7 +783,7 @@ html.lenis body {
    Buttons (class cta-fx, part of every button style in components/ui.ts), desktop only (big screen + a real mouse):
    an outlined pill; on hover a solid fill grows as a circle from the point where
    the cursor came in (and shrinks back toward where it left); on click it presses in
-   and, when it opens another page, floods the screen in navy before the page changes.
+   and, when it opens another page, floods the screen in purple before the page changes.
    Driven by components/ButtonFx.tsx. Phones and tablets keep the normal buttons.
    --------------------------------------------------------------------------- */
 @media (hover: hover) and (pointer: fine) and (min-width: 1001px) {
@@ -830,11 +802,11 @@ html.lenis body {
     color: var(--cta) !important;
     transition: transform 0.2s ease;
   }
-  /* white version: inside navy sections and over the dark page heroes */
-  .navy .cta-fx,
+  /* white version: inside purple sections and over the coloured page heroes */
+  .purple .cta-fx,
   .cta-fx[data-on-dark] {
     --cta: #fff;
-    --cta-on: #2c1a5c;
+    --cta-on: var(--brand-purple);
   }
   .cta-fx::before {
     content: "";
@@ -864,6 +836,11 @@ html.lenis body {
     clip-path: circle(var(--r) at var(--x) var(--y));
     transition: --r 0.55s cubic-bezier(0.65, 0, 0.35, 1);
     pointer-events: none;
+  }
+  /* buttons with an icon beside the text (e.g. "Explore the Platform →"): keep the icon's room (1rem icon + 0.5rem gap)
+     free, so the light copy sits exactly over the real text instead of being centred across the whole button */
+  .cta-fx:has(> svg:last-child)::after {
+    padding-right: 1.5rem;
   }
   .cta-fx.is-hot::before {
     transform: scale(1);
@@ -925,7 +902,7 @@ html.lenis body {
   position: fixed;
   z-index: 100;
   border-radius: 50%;
-  background: var(--navy);
+  background: var(--brand-purple);
   pointer-events: none;
   transform: scale(0);
   transition:
@@ -1109,7 +1086,7 @@ html.lenis body {
 /* ---------------------------------------------------------------------------
    Tab hover (class tab-fx): journey steps, platform module tabs, role cards. Desktop hover only.
    Parts, each optional, staggered so they read as one motion:
-     .tab-fx__sweep  a purple-to-teal line with a glowing head sweeps across (data-gleam on the
+     .tab-fx__sweep  a purple line with a glowing head sweeps across (data-gleam on the
                      tab = the bar is already full, so a white gleam passes instead)
      .tab-fx__roll   two copies of a label: the first rolls up and out, the accent copy rolls in
      .tab-fx__line   an underline draws in from the left
@@ -1119,7 +1096,7 @@ html.lenis body {
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: linear-gradient(90deg, var(--accent), #22b8d4);
+  background: var(--accent);
   clip-path: inset(0 100% 0 0);
 }
 .tab-fx__sweep::after {
@@ -1133,8 +1110,8 @@ html.lenis body {
   border-radius: 50%;
   background: #fff;
   box-shadow:
-    0 0 0 2px #22b8d4,
-    0 0 12px 3px rgba(34, 184, 212, 0.7);
+    0 0 0 2px var(--accent),
+    0 0 12px 3px rgba(var(--glow), 0.7);
   opacity: 0;
 }
 .tab-fx__roll {
@@ -1202,7 +1179,7 @@ html.lenis body {
 
 /* ---------------------------------------------------------------------------
    Module list hover (components/sections/PlatformModules.tsx), desktop only: one soft highlight
-   with a purple-to-teal bar on its left glides to whichever tab the mouse is on (springy ease),
+   with a purple bar on its left glides to whichever tab the mouse is on (springy ease),
    stretching to that tab's height; the hovered tab's text nudges right, the others dim slightly.
    --------------------------------------------------------------------------- */
 .mod-glide {
@@ -1233,8 +1210,8 @@ html.lenis body {
     bottom: 22%;
     width: 3px;
     border-radius: 3px;
-    background: linear-gradient(180deg, var(--accent), #22b8d4);
-    box-shadow: 0 0 12px rgba(34, 184, 212, 0.55);
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(var(--glow), 0.55);
     transform: scaleY(0.3);
     transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.5, 1) 0.05s;
   }
@@ -1265,7 +1242,7 @@ html.lenis body {
 
 /* ---------------------------------------------------------------------------
    Role card hover (components/sections/Roles.tsx), desktop only: the card tilts in 3D toward the
-   cursor, a purple-to-teal spotlight lights the border where the cursor is (plus a soft glow
+   cursor, a purple spotlight lights the border where the cursor is (plus a soft glow
    inside), and the icon pops forward. Cursor position comes in as --mx/--my, tilt as --rx/--ry.
    --------------------------------------------------------------------------- */
 @media (hover: hover) and (pointer: fine) and (min-width: 1001px) {
@@ -1294,7 +1271,7 @@ html.lenis body {
     inset: -1px;
     border-radius: inherit;
     padding: 1.5px;
-    background: radial-gradient(180px circle at var(--mx) var(--my), #22b8d4, var(--accent) 45%, transparent 75%);
+    background: radial-gradient(180px circle at var(--mx) var(--my), var(--accent) 45%, transparent 75%);
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
@@ -1372,10 +1349,10 @@ html.lenis body {
     background: var(--cta) !important;
     color: var(--cta-on) !important;
   }
-  .navy .cta-fx,
+  .purple .cta-fx,
   .cta-fx[data-on-dark] {
     --cta: #fff;
-    --cta-on: #2c1a5c;
+    --cta-on: var(--brand-purple);
   }
   .cta-fx,
   .cta-soft,

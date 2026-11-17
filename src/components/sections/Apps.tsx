@@ -9,7 +9,7 @@ const APPS = [
 
 export default function Apps() {
   return (
-    <section id="apps" className="teal teal-glow sec-tight">
+    <section id="apps" className="teal sec-tight">
       <div className="wrap">
         <SectionHead title="Apps for patients and referring doctors" lede="Care doesn’t stop at discharge. Two mobile apps keep the patient and the doctor who referred them in the loop." />
         <div className="grid grid-cols-2 gap-6 max-[1000px]:grid-cols-1">

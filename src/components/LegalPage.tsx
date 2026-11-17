@@ -4,10 +4,11 @@ import PageHero from "./PageHero";
 export type LegalSection = { id: string; title: string; body: ReactNode };
 
 /** Privacy Policy / Terms layout: a sticky list of sections beside the text */
-export default function LegalPage({ title, kind, sections }: { title: string; kind: string; sections: LegalSection[] }) {
+/** `kind` is the word used in the draft banner ("policy" / "page"); `tone` is the hero colour. */
+export default function LegalPage({ title, kind, tone, sections }: { title: string; kind: string; tone: "purple" | "teal"; sections: LegalSection[] }) {
   return (
     <>
-      <PageHero tone={kind === "policy" ? "purple" : "teal"} title={title} lede={<>Last updated <span className="ph">[date]</span></>} />
+      <PageHero tone={tone} title={title} lede={<>Last updated <span className="ph">[date]</span></>} />
       <section className="sec-tight">
         <div className="wrap grid grid-cols-[15rem_minmax(0,1fr)] items-start gap-[clamp(2rem,5vw,5rem)] max-[860px]:grid-cols-1">
           <nav aria-label="On this page" className="sticky top-[calc(var(--topbar)+1.5rem)] grid gap-0.5 text-sm max-[860px]:static">

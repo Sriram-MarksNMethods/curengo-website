@@ -49,7 +49,7 @@ export default function PrivacyPage() {
   return (
     <>
       <JsonLd data={breadcrumbLd("Privacy Policy", "/privacy-policy")} />
-      <LegalPage title="Privacy Policy" kind="policy" sections={SECTIONS} />
+      <LegalPage title="Privacy Policy" kind="policy" tone="purple" sections={SECTIONS} />
     </>
   );
 }

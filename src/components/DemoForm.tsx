@@ -8,7 +8,7 @@ const ROLES = ["Owner or director", "Medical director", "Doctor", "Nursing head"
 const CENTRE_TYPES = ["Inpatient rehabilitation", "Transitional / subacute care", "Post-hospitalization care", "OP physiotherapy clinic", "Assisted living", "Home care"];
 
 // Motion: labels light up on focus, a tick draws in once a required field is valid, empty/wrong fields
-// shake on submit. On send the button shrinks into a spinner, turns into a check, then a navy flood
+// shake on submit. On send the button shrinks into a spinner, turns into a check, then a purple flood
 // grows from it and the thank-you page opens underneath (the flood fades there, see ThankYou.tsx).
 const field = "group relative flex flex-col gap-2";
 const label = "text-sm font-semibold text-heading transition-colors duration-200 group-focus-within:text-accent";

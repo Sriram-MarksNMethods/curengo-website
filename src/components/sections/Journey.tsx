@@ -27,7 +27,7 @@ const STEPS = [
 
 const STEP_MS = 5000;
 
-export default function Journey({ navy = false }: { navy?: boolean }) {
+export default function Journey() {
   const [cur, setCur] = useState(0);
   const [hover, setHover] = useState(false);
   const [onScreen, setOnScreen] = useState(false);
@@ -68,7 +68,7 @@ export default function Journey({ navy = false }: { navy?: boolean }) {
       id="journey"
       onPointerEnter={(e) => e.pointerType === "mouse" && setHover(true)}
       onPointerLeave={(e) => e.pointerType === "mouse" && setHover(false)}
-      className={`sec-tight ${navy ? "navy navy-glow" : "border-t border-line"}`}>
+      className="sec-tight border-t border-line">
       <div className="wrap">
         <SectionHead title="Follow one patient through Curengo" lede="From the day they arrive to the weeks after they go home, every step is recorded in one place." />
         <ol ref={list} role="tablist" aria-label="Patient journey" data-reveal className="mb-8 grid grid-cols-7 gap-2 max-[900px]:flex max-[900px]:gap-4 max-[900px]:overflow-x-auto max-[900px]:[scrollbar-width:none]">
@@ -90,8 +90,8 @@ export default function Journey({ navy = false }: { navy?: boolean }) {
                     <span
                       key={`${cur}-${round}`}
                       aria-hidden="true"
-                      className={`absolute inset-0 origin-left rounded-sm bg-accent ${running ? "animate-[role-timer_5s_linear_forwards]" : ""}`}
-                      style={running ? undefined : { transform: "scaleX(1)" }}
+                      className="absolute inset-0 origin-left rounded-sm bg-accent"
+                      style={running ? { animation: `role-timer ${STEP_MS}ms linear forwards` } : { transform: "scaleX(1)" }}
                     />
                   )}
                   <i className="tab-fx__sweep" aria-hidden="true" />

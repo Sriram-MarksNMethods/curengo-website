@@ -50,7 +50,7 @@ const subscribe = (cb: () => void) => {
   return () => mq.removeEventListener("change", cb);
 };
 
-export default function Roles({ navy = false }: { navy?: boolean }) {
+export default function Roles() {
   const narrow = useSyncExternalStore(subscribe, () => window.matchMedia(NARROW).matches, () => false);
   const [open, setOpen] = useState<number | null>(0); // phones: the open accordion item
   const [opened, setOpened] = useState<number[]>([0]); // items opened at least once keep their screen, so closing animates
@@ -79,7 +79,7 @@ export default function Roles({ navy = false }: { navy?: boolean }) {
   };
 
   return (
-    <section id="roles" className={`sec-tight ${navy ? "navy navy-glow" : "bg-sunken"}`}>
+    <section id="roles" className="sec-tight bg-sunken">
       <div className="wrap">
         <SectionHead
           title="A screen for everyone on the team"
@@ -155,7 +155,7 @@ export default function Roles({ navy = false }: { navy?: boolean }) {
                   <b className="text-base font-semibold text-heading">{r.name}</b>
                   <span className="text-[0.8125rem] leading-normal text-muted max-[520px]:hidden">{r.text}</span>
                   {on && !manual && !paused && (
-                    <span key={current} className="absolute inset-x-[1.125rem] -bottom-px h-0.5 origin-left animate-[role-timer_6s_linear_forwards] rounded-sm bg-accent" aria-hidden="true" />
+                    <span key={current} className="absolute inset-x-[1.125rem] -bottom-px h-0.5 origin-left rounded-sm bg-accent" style={{ animation: `role-timer ${CYCLE}ms linear forwards` }} aria-hidden="true" />
                   )}
                 </button>
               );

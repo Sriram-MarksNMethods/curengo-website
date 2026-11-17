@@ -4,7 +4,7 @@
 // Desktop only, skipped for reduced motion.
 //  - hover: a fill circle grows from the point where the cursor came in, and shrinks back toward where it left
 //  - phones/tablets (touch): every press gets a ripple from the finger and a short buzz where supported
-//  - click/tap on a link to another page (all devices, not only desktop): the fill floods the whole screen in navy, the page changes underneath,
+//  - click/tap on a link to another page (all devices, not only desktop): the fill floods the whole screen in purple, the page changes underneath,
 //    then the flood fades away
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";

@@ -11,7 +11,7 @@ const VALUES = [
 
 export default function Values() {
   return (
-    <section id="why" className="teal teal-glow sec">
+    <section id="why" className="teal sec">
       <div className="wrap">
         <SectionHead
           title="One connected platform for rehabilitation care"

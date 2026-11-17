@@ -28,7 +28,7 @@ const BELIEFS = [
 const FACTS = [
   { k: "Built for", v: "Rehab and transitional care centres" },
   { k: "Runs on", v: "Any browser, no installation" },
-  { k: "ABDM", v: "ABDM integration", status: "In progress" }, // was "Integration" under an "ABDM" label (labels removed)
+  { k: "ABDM", v: "ABDM integration", status: "In progress" },
   { k: "Next", v: "Patient and partner doctor apps", status: "In development" },
 ];
 
@@ -69,7 +69,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="progress" className="navy navy-glow sec-tight">
+      <section id="progress" className="purple sec-tight">
         <div className="wrap">
           <SectionHead title="Where we are today" lede="What’s live, and what we’re building next." />
           <ol className="relative grid grid-cols-4 gap-5 before:absolute before:inset-x-0 before:top-[1.375rem] before:h-0.5 before:bg-linear-90 before:from-accent before:via-accent-line before:via-40% before:to-line max-[900px]:grid-cols-2 max-[900px]:before:hidden max-[520px]:grid-cols-1">
@@ -92,7 +92,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="beliefs" className="teal teal-glow sec">
+      <section id="beliefs" className="teal sec">
         <div className="wrap">
           <SectionHead title="How we work" />
           <div className="grid grid-cols-3 gap-5 max-[860px]:grid-cols-1">
@@ -143,7 +143,7 @@ export default function AboutPage() {
             {/* TODO: Google Maps embed once the office address is confirmed */}
             <div className="grid min-h-72 place-items-center bg-sunken bg-[radial-gradient(circle_at_60%_45%,var(--accent-soft),transparent_55%)] p-4 text-center text-sm text-faint">
               <div>
-                <div className="mx-auto mb-3 size-11 -rotate-45 rounded-[50%_50%_50%_0] bg-accent shadow-[0_10px_20px_-8px_rgba(77,42,141,0.6)]" aria-hidden="true" />
+                <div className="mx-auto mb-3 size-11 -rotate-45 rounded-[50%_50%_50%_0] bg-accent shadow-[0_10px_20px_-8px_color-mix(in_srgb,var(--brand-purple)_60%,transparent)]" aria-hidden="true" />
                 [Google map of the office, once the address is confirmed]
               </div>
             </div>

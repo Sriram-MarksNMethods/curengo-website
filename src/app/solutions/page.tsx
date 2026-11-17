@@ -33,7 +33,7 @@ export default function SolutionsPage() {
       <CareSettings />
 
       {/* the two main settings in detail */}
-      <section id="settings-detail" className="navy navy-glow sec-tight">
+      <section id="settings-detail" className="purple sec-tight">
         <div className="wrap">
           <div className="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] items-center gap-[clamp(2.5rem,5vw,6rem)] max-[860px]:grid-cols-1 max-[860px]:gap-8">
             <div data-reveal>

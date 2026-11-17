@@ -19,7 +19,7 @@ export default function TermsPage() {
   return (
     <>
       <JsonLd data={breadcrumbLd("Terms and Conditions", "/terms-and-conditions")} />
-      <LegalPage title="Terms and Conditions" kind="page" sections={SECTIONS} />
+      <LegalPage title="Terms and Conditions" kind="page" tone="teal" sections={SECTIONS} />
     </>
   );
 }

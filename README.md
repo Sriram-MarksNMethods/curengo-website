@@ -31,7 +31,7 @@ Without it, the form works in development (leads are only logged) but answers "n
 ## Design tokens
 
 Colours are CSS variables, used through Tailwind: `bg-page`, `bg-surface`, `bg-sunken`, `text-heading`, `text-body`, `text-muted`, `text-faint`, `border-line`, `bg-accent`, `bg-accent-soft` ...
-Dark mode swaps the variables (`data-theme="dark"` on `<html>`). Add the class `navy navy-glow` to a section to give it the dark navy look; product screens inside keep the normal theme.
+Dark mode swaps the variables (`data-theme="dark"` on `<html>`). Add the class `navy` to a section for the purple gradient look (or `teal` for flat teal); product screens inside keep the normal theme.
 
 ## Before launch: switch search back on ⚠️
 

@@ -2,6 +2,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
+import { BRAND } from "@/lib/site";
 
 export const alt = "Curengo: Digitizing the Continuum of Care. Rehabilitation Management Information System.";
 export const size = { width: 1200, height: 630 };
@@ -24,13 +25,13 @@ export default async function Image() {
           padding: "0 96px",
           color: "#fff",
           fontFamily: "Figtree",
-          background: "linear-gradient(140deg, #17133d 0%, #2f1f66 55%, #5a3f94 100%)",
+          background: `radial-gradient(circle farthest-corner at 79.09% 5.05%, ${BRAND.purpleLight} 0%, ${BRAND.purple} 100%)`,
         }}
       >
         <img src={src} width={290} height={100} alt="" />
         <div style={{ marginTop: 56, fontSize: 64, fontWeight: 600, lineHeight: 1.1, letterSpacing: -1.5 }}>Digitizing the Continuum of Care.</div>
-        <div style={{ marginTop: 24, fontSize: 34, fontWeight: 500, color: "#d8d2f0" }}>Rehabilitation Management Information System</div>
-        <div style={{ position: "absolute", left: 96, right: 96, bottom: 72, height: 6, borderRadius: 3, background: "linear-gradient(90deg, #c3b2f3, #5db8d7)" }} />
+        <div style={{ marginTop: 24, fontSize: 34, fontWeight: 500, color: "rgba(255,255,255,0.9)" }}>Rehabilitation Management Information System</div>
+        <div style={{ position: "absolute", left: 96, right: 96, bottom: 72, height: 6, borderRadius: 3, background: BRAND.teal }} />
       </div>
     ),
     {

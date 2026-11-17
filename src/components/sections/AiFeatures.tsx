@@ -5,7 +5,7 @@ import VoiceDemo from "../screens/VoiceDemo";
 
 export default function AiFeatures() {
   return (
-    <section id="ai" className="navy navy-glow sec-tight">
+    <section id="ai" className="purple sec-tight">
       <div className="wrap">
         <SectionHead
           title="AI that takes paperwork off the doctor’s desk"

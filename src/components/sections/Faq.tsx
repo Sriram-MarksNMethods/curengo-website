@@ -22,7 +22,7 @@ export default function Faq() {
         <div data-reveal className="sticky top-[calc(var(--topbar)+1.5rem)] max-[860px]:static">
           <h2 className={sectionTitle}>Questions, answered</h2>
           <p className="mt-4 leading-[1.7] text-muted">Everything centres usually ask before they switch from paper. Can’t find yours?</p>
-          <div className="navy mt-7 rounded-2xl p-6">
+          <div className="purple mt-7 rounded-2xl p-6">
             <b className="mb-1.5 block text-[1.0625rem] text-heading">Talk to our team</b>
             <p className="mb-5 text-[0.9375rem] text-muted">We’ll answer pricing, setup and ABDM questions on a short call.</p>
             <Link href="/book-a-demo#contact" className={btnLight}>Contact us</Link>

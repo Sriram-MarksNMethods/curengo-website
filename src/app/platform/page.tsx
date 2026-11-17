@@ -29,7 +29,7 @@ export default function PlatformPage() {
       />
       <PlatformModules />
       <Roles />
-      <Scales navy />
+      <Scales purple />
       <Apps />
       <Security />
       <GetStarted />

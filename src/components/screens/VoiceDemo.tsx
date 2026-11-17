@@ -49,7 +49,7 @@ export default function VoiceDemo() {
   }, [play]);
 
   return (
-    <div ref={root} data-reveal className="screen-dark relative flex flex-col overflow-hidden rounded-2xl border border-line bg-surface text-sm shadow-ui">
+    <div ref={root} data-reveal className="screen relative flex flex-col overflow-hidden rounded-2xl border border-line bg-surface text-sm shadow-ui">
       <div className="flex h-9 items-center gap-1.5 border-b border-line bg-sunken px-3.5" aria-hidden="true">
         <i className="size-[0.5625rem] rounded-full bg-fill" />
         <i className="size-[0.5625rem] rounded-full bg-fill" />
@@ -62,7 +62,7 @@ export default function VoiceDemo() {
             type="button"
             onClick={play}
             aria-label="Play the voice order demo"
-            className={`cta-soft relative grid size-14 shrink-0 cursor-pointer place-items-center rounded-full bg-white text-[#4d2a8d] [--soft-fill:rgba(77,42,141,0.16)] transition-transform hover:scale-105 after:absolute after:-inset-1.5 after:rounded-full after:border-2 after:border-white/50 after:opacity-0 ${listening ? "after:animate-[mic-pulse_1.2s_ease-out_infinite]" : ""}`}
+            className={`cta-soft relative grid size-14 shrink-0 cursor-pointer place-items-center rounded-full bg-accent text-accent-contrast [--soft-fill:rgba(255,255,255,0.2)] transition-transform hover:scale-105 after:absolute after:-inset-1.5 after:rounded-full after:border-2 after:border-accent-line after:opacity-0 ${listening ? "after:animate-[mic-pulse_1.2s_ease-out_infinite]" : ""}`}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="size-[1.375rem]">
               <rect x="9" y="2" width="6" height="12" rx="3" />

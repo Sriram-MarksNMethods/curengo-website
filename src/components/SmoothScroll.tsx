@@ -8,6 +8,9 @@ import Lenis from "lenis";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
+// where a section should land: its top, just below the sticky header
+const topOf = (el: HTMLElement) => Math.round(el.getBoundingClientRect().top + window.scrollY - (document.getElementById("siteBar")?.offsetHeight ?? 0));
+
 export default function SmoothScroll() {
   const pathname = usePathname();
   const lenisRef = useRef<Lenis | null>(null);
@@ -24,7 +27,6 @@ export default function SmoothScroll() {
     };
     if (lenis) raf = requestAnimationFrame(loop);
 
-    const headerHeight = () => document.getElementById("siteBar")?.offsetHeight ?? 0;
     const glideTo = (y: number) => (lenis ? lenis.scrollTo(y, { duration: 1.2 }) : window.scrollTo({ top: y, behavior: reduce ? "auto" : "smooth" }));
 
     const onClick = (e: MouseEvent) => {
@@ -41,7 +43,7 @@ export default function SmoothScroll() {
       const el = document.getElementById(decodeURIComponent(url.hash.slice(1)));
       if (!el) return;
       e.preventDefault();
-      glideTo(Math.round(el.getBoundingClientRect().top + window.scrollY - headerHeight()));
+      glideTo(topOf(el));
       history.replaceState(null, "", url.hash);
     };
     document.addEventListener("click", onClick);
@@ -60,7 +62,7 @@ export default function SmoothScroll() {
     const land = () => {
       const id = location.hash.slice(1);
       const el = id ? document.getElementById(decodeURIComponent(id)) : null;
-      const top = el ? Math.round(el.getBoundingClientRect().top + window.scrollY - (document.getElementById("siteBar")?.offsetHeight ?? 0)) : 0;
+      const top = el ? topOf(el) : 0;
       if (lenis) lenis.scrollTo(top, { immediate: true, force: true });
       else window.scrollTo(0, top);
     };

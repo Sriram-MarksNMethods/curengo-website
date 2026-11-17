@@ -9,9 +9,9 @@ const EXAMPLES = [
   ["Braden Scale", "Pressure injury risk", "Nursing"],
 ];
 
-export default function Scales({ navy = false }: { navy?: boolean }) {
+export default function Scales({ purple = false }: { purple?: boolean }) {
   return (
-    <section id="scales" className={`sec-tight ${navy ? "navy navy-glow" : "bg-sunken"}`}>
+    <section id="scales" className={`sec-tight ${purple ? "purple" : "bg-sunken"}`}>
       <div className="wrap grid grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] items-center gap-14 max-[860px]:grid-cols-1 max-[860px]:gap-8">
         <div data-reveal>
           <h2 className={sectionTitle}>Objective scores, not impressions</h2>

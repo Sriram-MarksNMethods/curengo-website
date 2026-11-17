@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
+import { BRAND, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -9,7 +9,7 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: "/",
     display: "standalone",
     background_color: "#fcfcfc",
-    theme_color: "#4d2a8d",
+    theme_color: BRAND.purple,
     icons: [{ src: "/icon.png", sizes: "any", type: "image/png" }],
   };
 }

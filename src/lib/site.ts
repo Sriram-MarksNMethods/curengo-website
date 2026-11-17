@@ -5,6 +5,9 @@ export const SITE_URL = "https://curengo.ai";
 export const SITE_NAME = "Curengo";
 export const SITE_TAGLINE = "Rehabilitation Management Information System";
 
+// Brand colours for places CSS can't reach (share image, app manifest). Keep in step with --brand-* in globals.css.
+export const BRAND = { purple: "#6658a4", purpleLight: "#6a69af", teal: "#01bdd5" };
+
 // ⚠️ REMINDER BEFORE LAUNCH: set this to true when the site goes live on curengo.ai.
 // While false, every page says "noindex, nofollow" and robots.txt blocks all crawlers, so the preview
 // (curengo-website.vercel.app) stays out of Google. Also listed in README.md under "Before launch".

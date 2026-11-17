@@ -102,16 +102,15 @@ export default function Plans() {
               data-draw-host
               className={`group/plan relative flex flex-col overflow-hidden rounded-[1.25rem] border p-[clamp(1.5rem,1.2rem+0.8vw,2rem)] transition-[transform,translate,box-shadow,border-color] duration-300 ${
                 p.featured
-                  ? "navy border-transparent shadow-[0_30px_60px_-28px_rgba(23,19,61,0.6)] min-[961px]:-translate-y-3 min-[961px]:hover:-translate-y-5"
+                  ? "purple border-transparent shadow-[0_30px_60px_-28px_color-mix(in_srgb,var(--brand-purple)_60%,transparent)] min-[961px]:-translate-y-3 min-[961px]:hover:-translate-y-5"
                   : "border-line bg-surface hover:-translate-y-1 hover:border-accent-line hover:shadow-ui"
               }`}
             >
-              {p.featured && <span aria-hidden="true" className="pointer-events-none absolute -top-[30%] -right-[30%] aspect-square w-[90%] bg-[radial-gradient(closest-side,rgba(105,80,155,0.55),transparent)]" />}
-              <div className="relative flex items-center justify-between gap-3">
+                            <div className="relative flex items-center justify-between gap-3">
                 <span className="grid size-11 place-items-center rounded-xl bg-accent-soft text-accent">
                   <Icon draw className="size-6">{p.icon}</Icon>
                 </span>
-                {p.featured && <span className="rounded-full bg-linear-90 from-[#c3b2f3] to-[#7fd9ea] px-3 py-1.5 text-xs font-bold text-navy">Most centres</span>}
+                {p.featured && <span className="rounded-full bg-white px-3 py-1.5 text-xs font-bold text-brand-purple">Most centres</span>}
               </div>
               <h3 className="relative mt-5 mb-1.5 text-[1.375rem] font-semibold text-heading">{p.name}</h3>
               <p className="relative min-h-[3em] leading-[1.55] text-muted">{p.text}</p>

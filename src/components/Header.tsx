@@ -1,7 +1,7 @@
 "use client";
 
 // One header for every page: transparent at the top, frosted once the page scrolls.
-// Over the dark page heroes (every page except home) its text and logo are white until it turns frosted.
+// Over the coloured page heroes (every page, home included) its text and logo are white until it turns frosted.
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -63,14 +63,27 @@ export default function Header() {
     return () => clearTimeout(t);
   }, [open]);
 
-  const solid = stuck || open;
-  const onDark = overPanel || (pathname !== "/" && !solid);
+  // pages with a teal hero: the logo's teal "n" would vanish on it, so the header is a solid bar there from the start.
+  // Pages already visited stay in <main> (hidden) for fast back/forward, so only the visible page counts.
+  const [overTeal, setOverTeal] = useState(false);
+  useEffect(() => {
+    const check = () => {
+      const page = [...(document.getElementById("main")?.children ?? [])].find((el) => el.getClientRects().length > 0); // hidden pages have no box
+      setOverTeal(!!page?.classList.contains("hero-teal"));
+    };
+    check();
+    const raf = requestAnimationFrame(check); // once more after the new page is painted
+    return () => cancelAnimationFrame(raf);
+  }, [pathname]);
+
+  const solid = stuck || open || overTeal;
+  const onDark = overPanel || !solid; // every page hero is coloured now (home is brand purple in light mode)
 
   return (
     <header
       id="siteBar"
       className={`sticky top-0 z-50 -mb-(--topbar) h-(--topbar) border-b pt-[env(safe-area-inset-top,0px)] transition-[background-color,border-color] duration-300 ${
-        open ? "border-line bg-page" : stuck ? "border-line bg-page/85 backdrop-blur-md backdrop-saturate-150" : "border-transparent"
+        open || (overTeal && !stuck) ? "border-line bg-page" : stuck ? "border-line bg-page/85 backdrop-blur-md backdrop-saturate-150" : "border-transparent"
       }`}
     >
       <div className="wrap flex h-full items-center gap-8">
@@ -96,7 +109,7 @@ export default function Header() {
         <nav
           id="siteNav"
           aria-label="Main"
-          className={`ml-auto flex items-center gap-7 max-[1000px]:fixed max-[1000px]:inset-0 max-[1000px]:-z-10 max-[1000px]:m-0 max-[1000px]:h-dvh max-[1000px]:flex-col max-[1000px]:items-stretch max-[1000px]:gap-0 max-[1000px]:overflow-y-auto max-[1000px]:bg-[#211b50] max-[1000px]:bg-[linear-gradient(150deg,#17133d_0%,#2f1f66_55%,#5a3f94_100%)] max-[1000px]:shadow-[24px_0_60px_-24px_rgba(23,19,61,0.7)] max-[1000px]:px-[max(clamp(1.5rem,5vw,6rem),env(safe-area-inset-left,0px))] max-[1000px]:pt-[calc(var(--topbar)+env(safe-area-inset-top,0px)+1.5rem)] max-[1000px]:pb-10 max-[1000px]:transition-[translate,visibility] max-[1000px]:duration-500 max-[1000px]:ease-[cubic-bezier(0.65,0,0.35,1)] ${
+          className={`ml-auto flex items-center gap-7 max-[1000px]:fixed max-[1000px]:inset-0 max-[1000px]:-z-10 max-[1000px]:m-0 max-[1000px]:h-dvh max-[1000px]:flex-col max-[1000px]:items-stretch max-[1000px]:gap-0 max-[1000px]:overflow-y-auto max-[1000px]:bg-brand-purple max-[1000px]:bg-(image:--purple-gradient) max-[1000px]:shadow-[24px_0_60px_-24px_rgba(23,19,61,0.7)] max-[1000px]:px-[max(clamp(1.5rem,5vw,6rem),env(safe-area-inset-left,0px))] max-[1000px]:pt-[calc(var(--topbar)+env(safe-area-inset-top,0px)+1.5rem)] max-[1000px]:pb-10 max-[1000px]:transition-[translate,visibility] max-[1000px]:duration-500 max-[1000px]:ease-[cubic-bezier(0.65,0,0.35,1)] ${
             open ? "max-[1000px]:visible max-[1000px]:translate-x-0" : "max-[1000px]:invisible max-[1000px]:-translate-x-full"
           }`}
         >
@@ -113,7 +126,7 @@ export default function Header() {
                 className={`${"mobileOnly" in item ? "min-[1001px]:hidden" : ""} relative text-[0.9375rem] font-medium no-underline transition-[color,translate,opacity] max-[1000px]:border-white/15 max-[1000px]:py-5 max-[1000px]:text-center max-[1000px]:[@media(max-height:700px)]:py-3 max-[1000px]:[@media(max-height:700px)]:text-2xl max-[1000px]:text-[1.75rem] max-[1000px]:font-semibold max-[1000px]:tracking-[-0.01em] max-[1000px]:text-white max-[1000px]:duration-500 ${i < NAV.length - 1 ? "max-[1000px]:border-b" : ""} ${
                   open ? "" : "max-[1000px]:-translate-x-6 max-[1000px]:opacity-0"
                 } ${
-                  onDark ? "text-[#d8d2f0] hover:text-white" : "text-muted hover:text-accent"
+                  onDark ? "text-white/85 hover:text-white" : "text-muted hover:text-accent"
                 } ${current ? (onDark ? "text-white" : "text-accent") : ""} ${
                   current ? "min-[1001px]:after:absolute min-[1001px]:after:inset-x-0 min-[1001px]:after:-bottom-2 min-[1001px]:after:h-0.5 min-[1001px]:after:rounded-sm min-[1001px]:after:bg-current" : ""
                 }`}
@@ -150,7 +163,7 @@ export default function Header() {
             href="/book-a-demo"
             data-on-dark={onDark || undefined}
             className={`cta-fx inline-flex h-10 shrink-0 items-center whitespace-nowrap rounded-lg px-[1.125rem] text-[0.9375rem] font-semibold no-underline transition-colors max-[1000px]:hidden ${
-              onDark ? "bg-white text-[#2c1a5c] hover:bg-[#ece6fb]" : "bg-accent text-accent-contrast hover:bg-accent-hover"
+              onDark ? "bg-white text-brand-purple hover:bg-brand-purple-tint" : "bg-accent text-accent-contrast hover:bg-accent-hover"
             }`}
           >
             Book a Demo
